@@ -11,5 +11,6 @@ namespace SuperTrunfo.model
         public string Nome { get; set; }
         public int Pontos { get; set; }
         public List<Carta> Cartas { get; set; }
+        public bool VencedorRodada { get; set; }
     }
 }
