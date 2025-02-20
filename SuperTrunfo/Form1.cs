@@ -7,6 +7,7 @@ namespace SuperTrunfo
         private List<Carta> cartas;
         private Jogador jogador1;
         private Jogador jogador2;
+        private bool Auto;
 
         public Form1()
         {
@@ -119,6 +120,7 @@ namespace SuperTrunfo
             }
 
             FecharRodada();
+            RodadaAutomatica();
         }
 
         private void FecharRodada()
@@ -192,6 +194,27 @@ namespace SuperTrunfo
                 LblTotalCartasJogador2.ForeColor = Color.Green;
                 return;
             }
+        }
+
+        private void RodadaAutomatica()
+        {
+            if (Auto == true)
+            {
+                Auto = false;
+                return;
+            }
+
+            if (BtnNovaRodada.Enabled == false) return;
+
+            BtnNovaRodada.PerformClick();
+
+            int numAleatorio = (int)new Random().NextInt64(1, 3);
+            if (numAleatorio == 1) RdoAtaque.PerformClick();
+            if (numAleatorio == 2) RdoDefesa.PerformClick();
+            if (numAleatorio == 3) RdoMagia.PerformClick();
+
+            Auto = true;
+            BtnDesafiar.PerformClick();
         }
     }
 }
